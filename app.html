@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Moon</title>
+		<meta charset="UTF-8">
+		<!-- Development Build -->
+		<script src="https://unpkg.com/moonjs/dist/moon.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	</head>
+	<body>
+
+		<div id="app">
+			<input
+				type="text"
+				m-model="msg"
+				m-on:keyup.enter="addTodo" />
+			<button m-on:click="addTodo">
+				Add Todo Item
+			</button>
+			<button m-on:click="setFilter('all')">All</button>
+			<button m-on:click="setFilter('active')">Active</button>
+			<button m-on:click="setFilter('completed')">Completed</button>
+		  	<ul>
+			  	<li m-for="item,idx in arr">
+			  		<button m-on:click="completeTodo(idx)">
+			  			O
+		  			</button>
+			  		<span m-literal:class="item.completed ? 'completed' : ''">
+			  			{{item.text}}
+		  			</span>
+			  		<button class="close" m-on:click="deleteTodo(idx)">
+			  			X
+		  			</button>
+		  	 	</li>
+		  	</ul>
+		</div>
+
+		<style type="text/css">
+			.completed {
+				text-decoration: line-through;
+			}
+
+			ul {
+				list-style-type: none;
+			}
+
+			li {
+				width: 200px;
+			}
+
+			* {
+				font-family: 'Roboto', sans-serif;
+				font-size: 14px;
+				padding: 7px;
+			}
+
+			button {
+				border: none;
+				background: white;
+			}
+
+			.close {
+				float: right;
+			}
+		</style>
+		<script src="src/js/app.js"></script>
+	</body>
+</html>
