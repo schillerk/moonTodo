@@ -3,6 +3,7 @@ new Moon({
   data: {
     msg: '',
     arr: [],
+    filter: 'all',
   },
   methods: {
   	addTodo: function() {
@@ -23,6 +24,16 @@ new Moon({
       this.set('arr', this.get('arr').map((el, i) =>
         i === idx ? {text: el.text, completed: !el.completed} : el
       ));
+    },
+
+    setFilter: function(filter) {
+      this.set('filter', filter);
+    },
+
+    getDisplayed: function() {
+      const filter = this.get('filter');
+      const arr = this.get('arr');
+      return filter === 'all' ? arr : arr.filter(el => el.completed === (filter === 'completed'));
     }
   }
 });

@@ -21,7 +21,7 @@
 			<button m-on:click="setFilter('active')">Active</button>
 			<button m-on:click="setFilter('completed')">Completed</button>
 		  	<ul>
-			  	<li m-for="item,idx in arr">
+			  	<li m-for="item,idx in getDisplayed()">
 			  		<button m-on:click="completeTodo(idx)">
 			  			O
 		  			</button>
